@@ -11,16 +11,20 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             VStack {
-                Color.cyan
+                LinearGradient(gradient: Gradient(stops: [
+                        .init(color: .pink, location: 0.45),
+                        .init(color: .indigo, location: 0.55),
+                    ]), startPoint: .top, endPoint: .bottom)
                     .ignoresSafeArea()
                 VStack(spacing: 20) {
-                    Color.blue
-                    Text("1")
+                    RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 20, endRadius: 200)
+                    Text("100")
                     Text("2")
                     Text("3")
                     Spacer()
                 }
                 VStack(alignment: .leading) {
+                    AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red]), center: .center)
                     Text("1")
                     Text("2")
                     Text("3")
