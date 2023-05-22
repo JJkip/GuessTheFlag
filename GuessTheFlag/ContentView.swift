@@ -11,7 +11,10 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             VStack {
+                Color.cyan
+                    .ignoresSafeArea()
                 VStack(spacing: 20) {
+                    Color.blue
                     Text("1")
                     Text("2")
                     Text("3")
@@ -23,8 +26,20 @@ struct ContentView: View {
                     Text("3")
                     Spacer()
                 }
+                ZStack {
+                    VStack(spacing: 0) {
+                        Color.red
+                        Color.blue
+                    }
+                    Text("Content goes here")
+                        .foregroundColor(.secondary)
+                        .padding(30)
+                        .background(.ultraThinMaterial)
+                }
                 ZStack{
-                    //Zstack is better used when we have  text on top of an image
+                    Color.pink
+                    Color.indigo
+                        .frame(minWidth: 140, maxWidth: .infinity, maxHeight: 80)
                     Text("1")
                     Text("2")
                     Text("3")
