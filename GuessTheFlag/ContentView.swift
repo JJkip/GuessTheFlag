@@ -11,11 +11,24 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             VStack {
-                LinearGradient(gradient: Gradient(stops: [
-                        .init(color: .pink, location: 0.45),
-                        .init(color: .indigo, location: 0.55),
-                    ]), startPoint: .top, endPoint: .bottom)
-                    .ignoresSafeArea()
+                VStack {
+                    Button("Button 1") {}
+                        .buttonStyle(.bordered)
+                    Button("Button 2", role: .destructive) {}
+                        .buttonStyle(.bordered)
+                    Button("Button 3") {}
+                        .buttonStyle(.borderedProminent)
+                        .tint(.mint)
+                    Button("Button 4", role: .destructive) {}
+                        .buttonStyle(.borderedProminent)
+                }
+                ZStack {
+                    LinearGradient(gradient: Gradient(stops: [
+                            .init(color: .pink, location: 0.45),
+                            .init(color: .indigo, location: 0.55),
+                        ]), startPoint: .top, endPoint: .bottom)
+                    Text("Linear gradient")
+                }
                 VStack(spacing: 20) {
                     RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 20, endRadius: 200)
                     Text("100")
@@ -65,8 +78,9 @@ struct ContentView: View {
                 }
             }
         }
-        .navigationTitle("Stacks")
-        .navigationBarTitleDisplayMode(.inline)
+    }
+    func executeDelete() {
+        print("Now deleting")
     }
 }
 
