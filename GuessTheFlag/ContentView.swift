@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationView{
             VStack {
                 VStack {
                     Button("Button 1") {}
@@ -21,6 +20,14 @@ struct ContentView: View {
                         .tint(.mint)
                     Button("Button 4", role: .destructive) {}
                         .buttonStyle(.borderedProminent)
+                    Button {
+                        print("Button was tapped")
+                    } label: {
+                        Label("Edit", systemImage: "pencil")
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(.red)
+                    }
                 }
                 ZStack {
                     LinearGradient(gradient: Gradient(stops: [
@@ -77,7 +84,6 @@ struct ContentView: View {
                     Text("9")
                 }
             }
-        }
     }
     func executeDelete() {
         print("Now deleting")
