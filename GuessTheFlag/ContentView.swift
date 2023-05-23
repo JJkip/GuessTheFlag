@@ -14,14 +14,16 @@ struct ContentView: View {
     @State private var correctAnswer = Int.random(in: 0...2)
     var body: some View {
         ZStack {
-            Color.gray
+            LinearGradient(gradient: Gradient(colors: [.pink, .purple]), startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
             VStack(spacing: 30) {
                 VStack {
                     Text("Tap the flag of")
                         .foregroundColor(.white)
+                        .font(.subheadline.weight(.heavy))
                     Text(countries[correctAnswer])
                         .foregroundColor(.white)
+                        .font(.largeTitle.weight(.semibold))
                 }
                 ForEach(0..<3) { number in
                     Button {
@@ -30,6 +32,8 @@ struct ContentView: View {
                     } label: {
                         Image(countries[number])
                             .renderingMode(.original)
+                            .clipShape(Capsule())
+                            .shadow(radius: 5)
                     }
                 }
             }
@@ -40,14 +44,17 @@ struct ContentView: View {
             Text("Your score is: ")
         }
     }
-    func flagTapped(_ number: Int){
+    func flagTapped(_ number: Int) {
         if number == correctAnswer {
             scoreTitle = "Correct"
         } else {
             scoreTitle = "Wrong"
         }
+
+        showingScore = true
     }
-    func askQuestion(){
+
+    func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
     }
